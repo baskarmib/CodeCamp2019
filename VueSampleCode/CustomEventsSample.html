@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Vue Sample Application</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+<div id="app">
+<header>
+<h1 v-text="headerText"></h1>
+</header>
+
+<p>
+<div>
+<session-component v-bind:session="sessiondetails" inline-template>
+<table>
+<tr>
+<td><label>SessionName :</label> </td>
+<td> <input type="text" v-model.trim="session.sessionName"></input></td>
+</tr>
+<tr> 
+<td><label>Session Description :</label> </td>
+<td> <textarea v-model.lazy="session.sessionDescription"></textarea></td>
+</tr>
+<tr>
+<td><label>Skill Level :</label> </td>
+<td><input type="text" v-model.lazy.trim="session.skillLevel"></input></td>
+</tr>
+</table>
+</session-component>
+</div>
+<input type="button" 
+v-show="showbutton"
+@click = "saveSession(sessiondetails)"
+ value="Save"></input>
+</p>
+</br>
+<h2>{{submittedSessionText}}</h2>
+<submitted-sessions :submitted="submittedSessions" :selected="selectedSessions" 
+v-on:updateselection="updateparentselection" inline-template>
+<div>
+
+<table>
+<th>SessionId</th>
+<th>Session Name</th>
+<th>Session Description</th>
+<th>Skill Level</th>
+<th>Selected</th>
+<tr v-for="sessions in submitted" :key="sessions.id" > 
+<td>{{sessions.id}}</td>
+<td>{{sessions.sessionName}}</td>
+<td>{{sessions.sessionDescription}}</td>
+<td>{{sessions.skillLevel}}</td>
+<td><input type="checkbox" :value="sessions.id" v-model="selected" v-on:change="updateselection(selected)" ></input></td>
+</tr>
+</table>
+</div>
+
+</submitted-sessions>
+
+</div>
+<script>
+const sessionComponent = 
+{
+props:['session']
+};
+
+const submittedsessionComponent = 
+{
+  props:
+  {
+    submitted:Array	,
+	selected:Array
+  },
+  methods:{
+     updateselection(selectedsession)
+	 {
+	   console.log("child");
+	   console.log(selectedsession);
+	   if(selectedsession.length >0)
+	   {
+	      this.$emit('updateselection',selectedsession);
+	   }
+	 }
+  }
+};
+var application = new Vue({
+el:"#app",
+components : {'session-component':sessionComponent,'submitted-sessions':submittedsessionComponent},
+data(){
+return{
+   
+   headerText: "Hello World Vue",  
+   showbutton : true, 
+   sessiondetails:{
+   sessionName:"",
+   sessionDescription:"",
+   skillLevel:""
+   },  
+   submittedSessiondetails:"",   
+   submittedSessions :[],
+   selectedSessions:[],
+   submittedSessionText:"Submitted Sessions"   
+}
+},
+methods:{
+//dont do this
+//saveSession()
+//{
+//   this.sessiondetails.id = this.submittedSessions.length +1;
+//   this.submittedSessions.push(this.sessiondetails);
+//}
+saveSession(sessiondetails)
+{
+if(sessiondetails.sessionName !="")
+{
+
+const sessionid = this.submittedSessions.length +1;
+this.submittedSessions.push({id:sessionid,
+sessionName:sessiondetails.sessionName,
+sessionDescription:sessiondetails.sessionDescription,
+skillLevel:sessiondetails.skillLevel,
+selected:false
+});
+}
+this.sessiondetails.sessionName = "";
+this.sessiondetails.sessionDescription = "";
+this.sessiondetails.skillLevel = "";
+},
+
+updateparentselection(first)
+{
+  console.log("parent");
+  var session, selectedids="";
+  if (first && this.submittedSessions && this.submittedSessions.length > 0)
+  {
+    for(session in this.submittedSessions)
+	{
+	  this.submittedSessions[session].selected = false;
+	  for(selectedids in first)
+	  {
+	     if(first[selectedids] === this.submittedSessions[session].id)
+		 {
+		 this.submittedSessions[session].selected = true;
+		 }	  
+	  }	  	  
+	}
+  }
+}
+}
+});
+
+</script>
+
+</body>
+</html>

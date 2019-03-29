@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Vue Sample Application</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+<div id="app">
+<header>
+<h1 v-text="headerText"></h1>
+</header>
+<p>
+<div>
+<table>
+<tr> 
+<td><label>SessionName :</label> </td>
+<td> <input type="text" v-model.trim="sessiondetails.sessionName"></input></td>
+</tr>
+<tr> 
+<td><label>Session Description :</label> </td>
+<td> <textarea v-model.lazy="sessiondetails.sessionDescription"></textarea></td>
+</tr>
+<tr> 
+<td><label>Skill Level :</label> </td>
+<td> <input type="text" v-model.lazy.trim="sessiondetails.skillLevel"></input></td>
+</tr>
+</table>
+</div>
+<input type="button" 
+v-show="showbutton"
+@click = "saveSession(sessiondetails)"
+ value="Save"></input>
+</p>
+
+<table>
+<th>SessionName</th>
+
+<tr v-for="sessions in submittedSessions" > 
+<td>{{sessions}}</td>
+
+</tr>
+
+</table>
+
+</div>
+<script>
+var application = new Vue({
+el:"#app",
+data:{
+   
+   headerText: "Hello World Vue",  
+   showbutton : true, 
+   sessiondetails:
+   {
+      id :"",
+	  sessionName : "",
+      sessionDescription : "",
+      skillLevel :""   
+   },
+   submittedSessions :[]   
+},
+methods:{
+//dont do this
+//saveSession()
+//{
+//   this.sessiondetails.id = this.submittedSessions.length +1;
+//   this.submittedSessions.push(this.sessiondetails);
+//}
+saveSession(sessiondetails)
+{
+   console.log(sessiondetails);
+   sessiondetails.id = this.submittedSessions.length +1;   
+   this.submittedSessions.push(sessiondetails.id);
+}
+
+
+
+}
+});
+</script>
+
+</body>
+</html>
