@@ -23,7 +23,7 @@ This componennt pushes the picture as Base64 string to Azure Function.
 
 You can use the below code to create your Azure Function. Create a basic ``HttpTrigger`` function with below code.
 
-``
+```
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -58,9 +58,13 @@ namespace FunctionApp2
         }
     }
 }
-``
+```
+
+
 You can follow this post to Publish to Azure Function. Once published you can get your Azure Function url and replace it in the TakePicture Component. 
 
+
 Take Picture Component uses NativeScript http plugin and Axios plugin to post the picture as Base64String.
+
 
 StateSample Component uses Vuex to update the state for counter variable.
