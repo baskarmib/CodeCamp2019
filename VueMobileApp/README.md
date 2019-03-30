@@ -61,7 +61,10 @@ namespace FunctionApp2
 ```
 
 
-You can follow this post to Publish to Azure Function. Once published you can get your Azure Function url and replace it in the TakePicture Component. 
+You can follow this post to Publish to Azure Function. 
+https://baskarrao.wordpress.com/2018/10/19/day-5-nativescript-post-series/
+
+Once published you can get your Azure Function url and replace it in the TakePicture Component. 
 
 
 Take Picture Component uses NativeScript http plugin and Axios plugin to post the picture as Base64String.
