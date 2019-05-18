@@ -1,10 +1,10 @@
 <template>
   <div class="home">
    <div>
-     <img class="logo" src="../assets/CCC_logo.1.png" aria-hidden="true"/>
+     <img class="logo" src="../assets/novacode.png" aria-hidden="true"/>
    </div>
    <div class="get-started">
-   Hello World Orlando Code Camp
+   Hello World NoVA Code Camp
   </div>
   </div>
 </template>
