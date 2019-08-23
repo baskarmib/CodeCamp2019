@@ -1,0 +1,50 @@
+
+{
+    "Employee" : [
+    {
+       "empId" : "23232",
+       "firstName" : "Test First" ,
+       "lastName" : "Test LastName",
+       "workingprojects" : [
+           "3434343",
+           "2323232"
+       ]
+    },
+    {
+        "empId" : "23233",
+        "firstName" : "Test 23233" ,
+        "lastName" : "Test 23233",        
+        "workingprojects" : [
+           "2323232"
+       ]
+     },
+     {
+        "empId" : "23234",
+        "firstName" : "Test 23234" ,
+        "lastName" : "Test 23234",
+        "workingprojects" : [
+            "3434343"            
+        ]
+     }
+    ],
+    "Project" : [
+        {
+            "projectId" : "3434343",
+            "projectName" : "Test Project 3434343",
+            "projectDescription" : "This is a new project",
+            "projectStatus" : "InProgress"
+        },
+        {
+            "projectId" : "2323232",
+            "projectName" : "Test Project 2323232",
+            "projectDescription" : "This is a new project",
+            "projectStatus" : "InProgress"
+        },
+        {
+            "projectId" : "3434348",
+            "projectName" : "Test Project 3434348",
+            "projectDescription" : "This is a future project",
+            "projectStatus" : "ToDo"
+        }
+    ]
+}

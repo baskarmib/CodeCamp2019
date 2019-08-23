@@ -1,0 +1,26 @@
+  type Employee
+  {
+    empId : String!  
+    firstName :String!
+    lastName : String!
+    workingprojects : [Project!]!
+  }
+  type Project
+  {
+      projectId : String!
+      projectName : String!
+      projectDescription : String
+      projectStatus : String!
+      employees : [Employee]!
+  }
+  type Query 
+  {
+    hello: String
+    employee(empId: String) : Employee
+    allemployees : [Employee]
+    project(projectId : ID!) : Project
+    allprojects : [Project]
+  }
+  type Mutation{
+    updateProjectStatus(projectId: String!, projectStatus:String) : Project
+  }
