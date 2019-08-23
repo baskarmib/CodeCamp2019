@@ -13,3 +13,6 @@ This repo contains all the source code used in presentation slides and nativescr
    Update auth-config.json in Auth folder with your domain and client id retrieved from Auth 0
    
 3. NativeScript Vue Image Capture - Code
+
+4. GraphQL API Example using Apollo.
+   After downloading the application, please run ``npm install`
