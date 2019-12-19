@@ -16,3 +16,6 @@ This repo contains all the source code used in presentation slides and nativescr
 
 4. GraphQL API Example using Apollo.
    After downloading the application, please run ``npm install`
+   
+5. GraphQL Implementation in .Net Core - Work In Progress Repo - Tested for Mutation and Subscription. 
+   Blog Post - https://baskarmib.netlify.com/content/posts/2019/12/how-to-use-subscriptions-in-graph-ql-c/
