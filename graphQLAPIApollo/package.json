@@ -1,7 +1,7 @@
 {
     "dependencies": {
         "apollo-server-express": "^2.8.2",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "graphql": "^14.4.2",
         "graphql-playground-middleware-express": "^1.7.12"
     }
